@@ -3,3 +3,12 @@
     -webkit-border-radius:  @radius;
     border-radius:          @radius;
 }
+
+.gradient(@start: #FFF, @end: #EEE) {
+    background-color: @end;
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(@start), to(@end));
+    background-image: -webkit-linear-gradient(top, @start, @end);
+    background-image:    -moz-linear-gradient(top, @start, @end);
+    background-image:     -ms-linear-gradient(top, @start, @end);
+    background-image:      -o-linear-gradient(top, @start, @end);
+}
