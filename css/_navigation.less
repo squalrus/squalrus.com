@@ -8,7 +8,7 @@
 
         li {
             display: inline-block;
-            margin: 0;
+            margin: 0 1.8em 0 0;
             vertical-align: top;
 
             a {
@@ -17,13 +17,25 @@
                 font-family: @font-custom;
                 font-size: 0.95em;
                 font-weight: 900;
-                padding: 0.65em 0.95em;
+                padding: 0.65em 0;
+                position: relative;
                 text-decoration: none;
                 text-transform: uppercase;
 
-                i { margin-right: 0.2em; }
+                i { margin-right: 0; }
+
+                &:hover { color: #EEE; }
             }
-            a:first-child { padding-left: 0; }
+        }
+        li.current a::after {
+            border-bottom: 5px solid #EEE;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            bottom: -1px;
+            content: ' ';
+            left: 50%;
+            margin-left: -2px;
+            position: absolute;
         }
     }
 }
