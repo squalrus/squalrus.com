@@ -1,7 +1,7 @@
-.rounded-corners(@radius: 4px) {
-    -moz-border-radius:     @radius;
-    -webkit-border-radius:  @radius;
-    border-radius:          @radius;
+.drop-shadow() {
+    -moz-box-shadow:    3px 3px 5px 6px #ccc;
+    -webkit-box-shadow: 3px 3px 5px 6px #ccc;
+    box-shadow:         3px 3px 5px 6px #ccc;
 }
 
 .gradient(@start: #FFF, @end: #EEE) {
@@ -11,4 +11,10 @@
     background-image:    -moz-linear-gradient(top, @start, @end);
     background-image:     -ms-linear-gradient(top, @start, @end);
     background-image:      -o-linear-gradient(top, @start, @end);
+}
+
+.rounded-corners(@radius: 4px) {
+    -moz-border-radius:     @radius;
+    -webkit-border-radius:  @radius;
+    border-radius:          @radius;
 }
