@@ -3,7 +3,8 @@ var  express = require( 'express' )
     ,routes  = require( './routes' )
     ,http    = require( 'http' )
     ,path    = require( 'path' )
-    ,less    = require( 'less-middleware' );
+    ,less    = require( 'less-middleware' )
+    ,uglify  = require( 'uglify-js' );
 
 var app = express();
 
