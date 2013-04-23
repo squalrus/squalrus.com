@@ -4,10 +4,12 @@
  cs.twitter = ( function(){
 
     // Variables
-    var mentionsURL = 'http://search.twitter.com/search.json?q=%40chadschulz';
+    var searchURL = 'http://search.twitter.com/search.json?q='
+        ,username = '%40chadschulz';
 
     $.ajax({
-        url: mentionsURL
+        url: 'http://search.twitter.com/search.json?q=%40chadschulz'
+        ,type: 'GET'
         ,success: function( data, status ){
             var el = $( '#twitter-status' );
             el.html( data );

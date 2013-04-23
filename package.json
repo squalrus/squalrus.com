@@ -1,9 +1,16 @@
 {
 	"name": "chadschulz.com"
-	,"version": "0.1.0"
-	,"private": true
+  	,"subdomain": "chadschulz"
+	,"domains": [
+    	"chadschulz.com"
+    	,"www.chadschulz.com"
+  	]
 	,"scripts": {
-		"start": "node app.js"
+		"start": "app.js"
+	}
+	,"version": "0.1.0"
+	,"engines": {
+	    "node": "0.10.x"
 	}
 	,"dependencies": {
 		"express": "3.2.0"
