@@ -6,7 +6,32 @@
     // Variables
     var profileUrl = 'https://api.github.com/users/squalrus'
         ,eventsUrl = 'https://api.github.com/users/squalrus/events'
-        ,updateProfile;
+        ,updateProfile
+        ,actionEvents = []
+        ,html = [];
+
+    actionEvents[ 'PushEvent' ] = function( data ){
+        var payload = data.payload
+            ,repo   = data.repo;
+
+        html.push( '<div>pushed ' + payload.commits.length + ' commits to <a href="' + repo.url + '" target="_blank">' + repo.name + '</a></div>' );
+    };
+
+    actionEvents[ 'WatchEvent' ] = function( data ){
+        html.push( 'watched' );
+    };
+
+    actionEvents[ 'CreateEvent' ] = function( data ){
+        html.push( 'created' );
+    };
+
+    actionEvents[ 'IssueCommentEvent' ] = function( data ){
+        html.push( 'commented' );
+    };
+
+    actionEvents[ 'PullRequestEvent' ] = function( data ){
+        html.push( 'pull requested' );
+    };
 
     updateProfile = function( data ){
         var $el
@@ -21,31 +46,31 @@
     };
 
     updateFeed = function( data ){
-        var $el
-        ,html = [];
+        var $el;
 
         $el = $( '#github-feed' );
 
         data.forEach( function( value, index, array ){
-            html.push( '<p>' + value.actor.login + ' did a ' + value.type + '</p>' );
+            actionEvents[ value.type ]( value );
         });
-
 
         $el.html( html.join( '' ) );
     };
 
-    $.ajax({
-        url: profileUrl
-        ,success: function( data, status ){
-            updateProfile( data );
-        }
-    });
+    updateFeed( gitmock );
 
-    $.ajax({
-        url: eventsUrl
-        ,success: function( data, status ){
-            updateFeed( data );
-        }
-    });
+    // $.ajax({
+    //     url: profileUrl
+    //     ,success: function( data, status ){
+    //         updateProfile( data );
+    //     }
+    // });
+
+    // $.ajax({
+    //     url: eventsUrl
+    //     ,success: function( data, status ){
+    //         updateFeed( data );
+    //     }
+    // });
 
 })();

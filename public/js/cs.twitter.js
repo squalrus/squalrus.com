@@ -8,8 +8,7 @@
         ,username = '%40chadschulz';
 
     $.ajax({
-        url: 'http://search.twitter.com/search.json?q=%40chadschulz'
-        ,type: 'GET'
+        url: 'http://www.twitter.com/chadschulz'
         ,success: function( data, status ){
             var el = $( '#twitter-status' );
             el.html( data );
