@@ -16,7 +16,7 @@
             ,repo   = data.repo
             ,date = new Date( data.created_at );
 
-        html.push( '<div class="activity-entry github">' + actionEvents[ data.type ]( payload, repo ) + '<span class="activity-date">' + date + '</span></div>' );
+        html.push( '<div class="activity-entry github"><i class="icon-github"></i>' + actionEvents[ data.type ]( payload, repo ) + '<span class="activity-date">' + date + '</span></div>' );
     };
 
     /**

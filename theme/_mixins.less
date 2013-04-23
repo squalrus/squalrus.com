@@ -1,7 +1,7 @@
-.drop-shadow() {
-    -moz-box-shadow:    3px 3px 5px 6px #ccc;
-    -webkit-box-shadow: 3px 3px 5px 6px #ccc;
-    box-shadow:         3px 3px 5px 6px #ccc;
+.drop-shadow( @x: 3px, @y: 3px, @blur: 5px, @distance: 6px, @color: #666 ) {
+    -moz-box-shadow:    @x @y @blur @distance @color;
+    -webkit-box-shadow: @x @y @blur @distance @color;
+    box-shadow:         @x @y @blur @distance @color;
 }
 
 .gradient(@start: #FFF, @end: #EEE) {
