@@ -1,0 +1,47 @@
+.activity-stream {
+    font-size: 1.1em;
+
+    .activity-entry {
+        margin: .5em 0;
+        padding: .2em .2em .2em 3em;
+        position: relative;
+
+        [class*='icon-'] {
+            background-color: #369;
+            left: 0;
+            position: absolute;
+            top: 6px;
+        }
+
+        .activity-content {
+            border-left: 1px solid #BBB;
+            padding-left: 1em;
+
+            code {
+                margin: 0 .2em;
+                padding: .3em .5em;
+            }
+            .quote {
+                color: lighten( @color-font, 20% );
+                display: block;
+                font-size: .85em;
+                font-style: italic;
+                font-weight: 400;
+                line-height: 1.4em;
+                margin-top: .5em;
+                padding: 0 1em;
+            }
+            .keyword {
+                font-family: @font-custom;
+                font-size: .8em;
+                font-weight: 900;
+                text-transform: uppercase;
+            }
+            .date {
+                display: block;
+                font-size: .8em;
+                margin: .6em 0 .3em 0;
+            }
+        }
+    }
+}

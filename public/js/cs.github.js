@@ -16,30 +16,31 @@
             ,repo   = data.repo
             ,date = new Date( data.created_at );
 
-        html.push( '<div class="activity-entry github"><i class="icon-github"></i>' + actionEvents[ data.type ]( payload, repo ) + '<span class="activity-date">' + date + '</span></div>' );
+        html.push( '<div class="activity-entry github"><i class="icon-github"></i><div class="activity-content">' + actionEvents[ data.type ]( payload, repo ) + '<span class="date">' + date + '</span></div></div>' );
     };
 
     /**
      * Format a PushEvent
      */
     actionEvents[ 'PushEvent' ] = function( payload, repo ){
-        return 'pushed <code>' + payload.commits.length + ' commits</code> to <a href="' + repo.url + '" target="_blank">' + repo.name + '</a>';
+        var commit = ( payload.commits.length === 1 ) ? 'commit' : 'commits';
+        return '<span class="keyword">pushed</span> <code>' + payload.commits.length + ' ' + commit + '</code> to <a href="' + repo.url + '" target="_blank">' + repo.name + '</a>';
     };
 
     actionEvents[ 'WatchEvent' ] = function( payload, repo ){
-        return payload.action + ' watching <a href="' + repo.url + '" target="_blank">' + repo.name + '</a>';
+        return '<span class="keyword">watched</span> <a href="' + repo.url + '" target="_blank">' + repo.name + '</a>';
     };
 
     actionEvents[ 'CreateEvent' ] = function( payload, repo ){
-        return 'created <code>' + payload.ref + ' ' + payload.ref_type + '</code> <a href="' + repo.url + '" target="_blank">' + repo.name + '</a>';
+        return '<span class="keyword">created</span> <code>' + payload.ref + ' ' + payload.ref_type + '</code> <a href="' + repo.url + '" target="_blank">' + repo.name + '</a>';
     };
 
     actionEvents[ 'IssueCommentEvent' ] = function( payload, repo ){
-        return payload.action + 'comment on issue in repo <a href="' + repo.url + '" target="_blank">' + repo.name + '</a> <span>' + payload.issue.body + '</span>';
+        return '<span class="keyword">commented</span> in repo <a href="' + repo.url + '" target="_blank">' + repo.name + '</a> <span class="quote">' + payload.comment.body + '</span>';
     };
 
     actionEvents[ 'PullRequestEvent' ] = function( payload, repo ){
-        return 'pull requested';
+        return '<span class="keyword">pull request</span> on <a href="' + repo.url + '" target="_blank">' + repo.name + '</a> <span class="quote">' + payload.pull_request.body + '</span>';
     };
 
     updateProfile = function( data ){
