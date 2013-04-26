@@ -16,7 +16,9 @@
             ,repo   = data.repo
             ,date = new Date( data.created_at );
 
-        html.push( '<div class="activity-entry github"><i class="icon-github"></i><div class="activity-content">' + actionEvents[ data.type ]( payload, repo ) + '<span class="date">' + date + '</span></div></div>' );
+        if( actionEvents[ data.type ] ){
+            html.push( '<div class="activity-entry github"><i class="icon-github icon-activity"></i><div class="activity-content">' + actionEvents[ data.type ]( payload, repo ) + '<span class="date">' + date + '</span></div></div>' );
+        }
     };
 
     /**
@@ -67,7 +69,8 @@
         $el.html( html.join( '' ) );
     };
 
-    updateFeed( gitmock );
+    // GITHUB MOCK DATA
+    // updateFeed( gitmock );
 
     // $.ajax({
     //     url: profileUrl
@@ -76,11 +79,11 @@
     //     }
     // });
 
-    // $.ajax({
-    //     url: eventsUrl
-    //     ,success: function( data, status ){
-    //         updateFeed( data );
-    //     }
-    // });
+    $.ajax({
+        url: eventsUrl
+        ,success: function( data, status ){
+            updateFeed( data );
+        }
+    });
 
 })();
