@@ -30,7 +30,7 @@
     };
 
     actionEvents[ 'WatchEvent' ] = function( payload, repo ){
-        return '<span class="keyword">watched</span> <a href="' + repo.url + '" target="_blank">' + repo.name + '</a>';
+        return '<span class="keyword">starred</span> <a href="' + repo.url + '" target="_blank">' + repo.name + '</a>';
     };
 
     actionEvents[ 'CreateEvent' ] = function( payload, repo ){
