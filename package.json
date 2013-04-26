@@ -1,21 +1,21 @@
 {
-	"name": "chadschulz.com"
-  	,"subdomain": "chadschulz"
-	,"domains": [
-    	"chadschulz.com"
-    	,"www.chadschulz.com"
-  	]
-	,"scripts": {
+	"name": "chadschulz.com",
+	"subdomain": "chadschulz",
+	"domains": [
+		"chadschulz.com",
+		"www.chadschulz.com"
+	],
+	"scripts": {
 		"start": "app.js"
-	}
-	,"version": "0.1.0"
-	,"engines": {
-	    "node": "0.10.x"
-	}
-	,"dependencies": {
-		"express": "3.2.0"
-		,"ejs": "*"
-		,"less-middleware": "*"
-		,"uglify-js": "*"
+	},
+	"version": "0.1.2",
+	"engines": {
+		"node": "0.10.4"
+	},
+	"dependencies": {
+		"express": "3.2.0",
+		"ejs": "*",
+		"less-middleware": "*",
+		"uglify-js": "*"
 	}
 }
