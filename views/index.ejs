@@ -29,7 +29,6 @@
     <section role="main">
         <div class="container-thin">
             <h2>Activity</h2>
-            <div id="github-profile"></div>
             <div id="github-feed" class="activity-stream"></div>
 
             <div id="twitter-status" class="activity-stream"></div>
@@ -44,9 +43,17 @@
     </footer>
 
     <script src="/js/lib/jquery.min.js"></script>
+    <script src="/js/Stream.js"></script>
+    <script src="/js/Stream.Github.js"></script>
+    <script src="/js/Stream.Twitter.js"></script>
     <script src="/js/cs.js"></script>
     <script src="/js/cs.util.js"></script>
-    <script src="/js/cs.github.js"></script>
-    <script src="/js/cs.twitter.js"></script>
+    <script>
+        var stream = new ActivityStream;
+
+        $.when( stream.github(), stream.twitter() ).done( function( ){
+            $( '#github-feed' ).html( stream.toString() );
+        });
+    </script>
 </body>
 </html>
