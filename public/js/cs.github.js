@@ -17,7 +17,9 @@
             ,date = new Date( data.created_at );
 
         if( actionEvents[ data.type ] ){
-            html.push( '<div class="activity-entry github"><i class="icon-github icon-activity"></i><div class="activity-content">' + actionEvents[ data.type ]( payload, repo ) + '<span class="date">' + date + '</span></div></div>' );
+            html.push( '<article class="activity-entry github"><i class="icon-github icon-activity"></i><div class="activity-content">' + actionEvents[ data.type ]( payload, repo ) + '<time class="date" datetime="' + date + '">' + date + '</time></div></article>' );
+        } else {
+            console.log( 'event:' + data.type );
         }
     };
 

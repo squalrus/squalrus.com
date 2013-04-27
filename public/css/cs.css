@@ -23,12 +23,13 @@ section{margin-bottom:3.0em;}
 .container{margin:0 auto;width:960px;}
 .container-thin{margin:0 auto;width:660px;}
 footer{background-color:#DDD;margin:0;padding-bottom:80px;}footer p{margin:0;}
-.navbar{background-color:#222222;border-bottom:2px solid #2f2f2f;padding:0.2em 0;width:100%;z-index:999;-moz-box-shadow:0px 0px 4px 3px rgba(0, 0, 0, 0.2);-webkit-box-shadow:0px 0px 4px 3px rgba(0, 0, 0, 0.2);box-shadow:0px 0px 4px 3px rgba(0, 0, 0, 0.2);}.navbar ul{margin:0;}.navbar ul>li{display:inline-block;margin:0 1.8em 0 0;vertical-align:top;}.navbar ul>li>a{color:#F4F4F4;display:block;font-family:'Raleway',sans-serif;font-size:0.95em;font-weight:900;padding:0.65em 0;position:relative;text-decoration:none;text-transform:uppercase;}.navbar ul>li>a i{margin-right:0;}
-.navbar ul>li>a:hover{color:#EEE;}
-.navbar ul>li>ul{display:none;}
-.navbar ul li.current a::after{border-bottom:5px solid #EEE;border-left:6px solid transparent;border-right:6px solid transparent;bottom:-1px;content:' ';left:50%;margin-left:-2px;position:absolute;}
+.navbar{background-color:#222222;padding:0.4em 0;width:100%;z-index:9999;-moz-box-shadow:0px 0px 4px 3px rgba(0, 0, 0, 0.2);-webkit-box-shadow:0px 0px 4px 3px rgba(0, 0, 0, 0.2);box-shadow:0px 0px 4px 3px rgba(0, 0, 0, 0.2);}.navbar ul{margin:0;}.navbar ul li{display:inline-block;vertical-align:top;}
+.navbar ul>li{margin:0 1.8em 0 0;}.navbar ul>li>a{color:#F4F4F4;display:block;font-family:'Raleway',sans-serif;font-size:0.95em;font-weight:900;padding:0.65em 0;position:relative;text-decoration:none;text-transform:uppercase;}.navbar ul>li>a:hover{color:#EEE;}
+.navbar ul>li.logo>a{font-size:1.8em;padding:.45em 0;}
+.navbar ul>li.social{float:right;font-size:1.5em;margin:0;}.navbar ul>li.social li{margin:0;}
+.navbar ul>li.current a::after{border-bottom:5px solid #EEE;border-left:6px solid transparent;border-right:6px solid transparent;bottom:-1px;content:' ';left:50%;margin-left:-2px;position:absolute;}
 .navbar-fixed{position:fixed;top:0;}
-.navbar-fixed+section{margin-top:60px;}
+.navbar-fixed+header{margin-top:90px;}
 .icon-activity{color:#CCC;font-size:35px;}.icon-activity:hover{color:#AAA;}
 .btn{background-color:#222;border:1px solid #333;color:#F4F4F4;display:inline-block;font-family:'Raleway',sans-serif;font-size:1.3em;font-weight:900;padding:0.8em 1.1em;text-decoration:none;text-transform:uppercase;-moz-border-radius:4px;-webkit-border-radius:4px;border-radius:4px;}
 .btn-primary{background-color:#4690e0;}
