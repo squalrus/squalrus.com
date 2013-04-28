@@ -4,7 +4,7 @@ var  express = require( 'express' )
     ,http    = require( 'http' )
     ,path    = require( 'path' )
     ,less    = require( 'less-middleware' )
-    ,uglify  = require( 'uglify-js' );
+    ;
 
 var app = express();
 

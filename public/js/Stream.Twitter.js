@@ -23,8 +23,11 @@
     };
 
     formatTweet = function( data ){
-        return '<span class="keyword">twitters</span> ' + data;
+        var replace = '$1<a href="http://twitter.com/$2">@$2</a>'
+            ,regex = /(^|[^@\w])@(\w{1,15})\b/g
+            ;
 
+        return data.replace( regex, replace );
     };
 
     return $.ajax({

@@ -27,5 +27,5 @@ var ActivityItem = function( date, html ){
 };
 
 ActivityItem.prototype.toString = function( ){
-    return this.id + '  ' + this.html;
+    return this.html;
 };
