@@ -4,6 +4,7 @@
  ActivityStream.prototype.github = function(){
 
     var url = 'https://api.github.com/users/squalrus/events'
+        ,base = 'https://github.com/'
         ,updateStream
         // Types of Github Events
         ,actionEvents = []
@@ -31,23 +32,31 @@
      */
     actionEvents[ 'PushEvent' ] = function( payload, repo ){
         var commit = ( payload.commits.length === 1 ) ? 'commit' : 'commits';
-        return '<span class="keyword">pushed</span> <code>' + payload.commits.length + ' ' + commit + '</code> to <a href="' + repo.url + '" target="_blank">' + repo.name + '</a>';
+        return '<span class="keyword">pushed</span> <code>' + payload.commits.length + ' ' + commit + '</code> to <a href="' + base + repo.name + '" target="_blank">' + repo.name + '</a>';
+    };
+
+    actionEvents[ 'FollowEvent' ] = function( payload, repo ){
+        return '<span class="keyword">followed</span> <a href="' + payload.target.html_url + '" target="_blank">' + payload.target.login + '</a>';
     };
 
     actionEvents[ 'WatchEvent' ] = function( payload, repo ){
-        return '<span class="keyword">starred</span> <a href="' + repo.url + '" target="_blank">' + repo.name + '</a>';
+        return '<span class="keyword">starred</span> <a href="' + base + repo.name + '" target="_blank">' + repo.name + '</a>';
     };
 
     actionEvents[ 'CreateEvent' ] = function( payload, repo ){
-        return '<span class="keyword">created</span> <code>' + payload.ref + ' ' + payload.ref_type + '</code> <a href="' + repo.url + '" target="_blank">' + repo.name + '</a>';
+        return '<span class="keyword">created</span> <code>' + payload.ref + ' ' + payload.ref_type + '</code> <a href="' + base + repo.name + '" target="_blank">' + repo.name + '</a>';
+    };
+
+    actionEvents[ 'IssuesEvent' ] = function( payload, repo ){
+        return '<span class="keyword">created issue</span> in repo <a href="' + base + repo.name + '" target="_blank">' + repo.name + '</a> <span class="quote">' + payload.issue.body + '</span>';
     };
 
     actionEvents[ 'IssueCommentEvent' ] = function( payload, repo ){
-        return '<span class="keyword">commented</span> in repo <a href="' + repo.url + '" target="_blank">' + repo.name + '</a> <span class="quote">' + payload.comment.body + '</span>';
+        return '<span class="keyword">commented</span> in repo <a href="' + base + repo.name + '" target="_blank">' + repo.name + '</a> <span class="quote">' + payload.comment.body + '</span>';
     };
 
     actionEvents[ 'PullRequestEvent' ] = function( payload, repo ){
-        return '<span class="keyword">pull request</span> on <a href="' + repo.url + '" target="_blank">' + repo.name + '</a> <span class="quote">' + payload.pull_request.body + '</span>';
+        return '<span class="keyword">pull request</span> on <a href="' + base + repo.name + '" target="_blank">' + repo.name + '</a> <span class="quote">' + payload.pull_request.body + '</span>';
     };
 
     // AJAX call to Github API

@@ -1,9 +1,11 @@
 // Module Dependencies
-var  express = require( 'express' )
-    ,routes  = require( './routes' )
-    ,http    = require( 'http' )
-    ,path    = require( 'path' )
-    ,less    = require( 'less-middleware' )
+var  express      = require( 'express' )
+    ,routes       = require( './routes' )
+    ,http         = require( 'http' )
+    ,path         = require( 'path' )
+    ,less         = require( 'less-middleware' )
+    ,assetManager = require( 'connect-assetmanager' )
+    ,assetHandler = require( 'connect-assetmanager-handlers' )
     ;
 
 var app = express();
@@ -19,12 +21,34 @@ app.use( express.logger('dev') );
 app.use( express.bodyParser() );
 app.use( express.methodOverride() );
 app.use( app.router );
+
+// LESS compiler middleware
 app.use( less({
     src: __dirname + '/theme'
     ,dest: __dirname + '/public/css'
     ,prefix: '/css'
     ,compress: true
 }) );
+
+// Minification middleware
+app.use( assetManager({
+    'js': {
+        'route': /\/js\/Stream\.js/
+        ,'path': './public/js/'
+        ,'dataType': 'javascript'
+        ,'files': [
+            'Stream.js'
+            ,'Stream.Github.js'
+            ,'Stream.Twitter.js'
+        ]
+        ,'debug': true
+        // Hold off until officially fixed
+        // ,'postManipulate': {
+        //     '^': [ assetHandler.uglifyJsOptimize ]
+        // }
+    }
+}) );
+
 app.use( express.static( path.join( __dirname, 'public' ) ) );
 
 // Development only

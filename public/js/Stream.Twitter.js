@@ -23,11 +23,19 @@
     };
 
     formatTweet = function( data ){
-        var replace = '$1<a href="http://twitter.com/$2">@$2</a>'
-            ,regex = /(^|[^@\w])@(\w{1,15})\b/g
+        var atReplace   = '$1<a href="http://www.twitter.com/$2" target="_blank">@$2</a>'
+            ,linkReplace = '<a href="$1" target="_blank">$1</a>'
+            ,hashReplace = '$1<a href="http://search.twitter.com/search?q=%23$2" target="_blank">#$2</a>'
+            ,atRegex    = /(^|[^@\w])@(\w{1,15})\b/g
+            ,linkRegex  = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/i
+            ,hashRegex  = /(^|\s)#(\w+)/g
             ;
 
-        return data.replace( regex, replace );
+        data = data.replace( linkRegex, linkReplace );
+        data = data.replace( hashRegex, hashReplace );
+        data = data.replace( atRegex, atReplace );
+
+        return data;
     };
 
     return $.ajax({
