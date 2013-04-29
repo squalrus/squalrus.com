@@ -1,8 +1,8 @@
 // BUTTONS
 .btn {
-    background-color: #222;
-    border: 1px solid #333;
-    color: #F4F4F4;
+    background-color: @color-dark;
+    border: 1px solid darken( @color-dark, 10% );
+    color: @color-light;
     display: inline-block;
     font-family: @font-custom;
     font-size: 1.3em;
@@ -13,7 +13,16 @@
     .rounded-corners();
 }
 
-.btn-primary { background-color: @color-primary; }
+.btn-primary {
+    background-color: @color-primary;
+    border: 1px solid darken( @color-primary, 10% );
+}
+
+a.btn:link, a.btn:visited,
+a.btn:active, a.btn:hover {
+    color: #F4F4F4;
+    text-decoration: none;
+}
 
 // TOGGLE SWITCH
 ul.toggle-switch {
