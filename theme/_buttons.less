@@ -1,3 +1,4 @@
+// BUTTONS
 .btn {
     background-color: #222;
     border: 1px solid #333;
@@ -13,3 +14,32 @@
 }
 
 .btn-primary { background-color: @color-primary; }
+
+// TOGGLE SWITCH
+ul.toggle-switch {
+    margin: 0;
+
+    li {
+        display: inline-block;
+        margin: 0;
+
+        a {
+            cursor: pointer;
+            display: block;
+            padding: .4em .4em;
+            .rounded-corners();
+
+            &:hover { text-decoration: underline; }
+        }
+    }
+
+    li.active {
+        a {
+            background-color: @color-primary;
+            color: #FFF;
+            padding: .4em .8em;
+
+            &:hover { text-decoration: none; }
+        }
+    }
+}

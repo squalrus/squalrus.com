@@ -7,16 +7,17 @@
 </head>
 <body>
     <nav class="navbar navbar-fixed">
-        <div class="container-thin">
+        <div class="container">
             <ul role="navigation">
                 <li class="logo"><a href="http://chadschulz.com/">Chad Schulz</a></li>
                 <li class="social">
                     <ul>
-                        <li><a href="https://github.com/squalrus" target="_blank"><i class="icon-github-sign"></i></a></li>
+                        <li class="github"><a href="https://github.com/squalrus" target="_blank"><i class="icon-github-sign"></i></a></li>
                         <li><a href="https://twitter.com/chadschulz" target="_blank"><i class="icon-twitter-sign"></i></a></li>
                         <li><a href="http://www.linkedin.com/in/chadschulz" target="_blank"><i class="icon-linkedin-sign"></i></a></li>
                         <li><a href="https://www.facebook.com/Squalrus" target="_blank"><i class="icon-facebook-sign"></i></a></li>
                         <li><a href="https://plus.google.com/116373016973897362844" target="_blank"><i class="icon-google-plus-sign"></i></a></li>
+                        <li><a href="https://untappd.com/user/Squalrus" target="_blank"><i class="icon-beer"></i></a></li>
                     </ul>
                 </li>
             </ul>
@@ -24,20 +25,55 @@
     </nav>
 
     <header role="banner">
+        <div class="container">
+            <img src="http://placekitten.com/960/300" height="300" width="960" />
+        </div>
     </header>
 
     <section role="main">
-        <div class="container-thin">
-            <h2>Activity</h2>
-            <div id="github-feed" class="activity-stream"></div>
+        <div class="container">
+            <div class="span-9 main-content">
+                <h2>latest</h2>
+                <ul class="toggle-switch">
+                    <li id="all" class="active"><a href="#">all</a></li>
+                    <li id="github"><a href="#">github</a></li>
+                    <li id="twitter"><a href="#">twitter</a></li>
+                    <!-- <li id="untappd"><a href="#">untappd</a></li> -->
+                </ul>
+                <div id="activity-stream" class="activity-stream"></div>
+            </div>
+            <div class="span-3 span-last sidebar">
+                <h2>me</h2>
+                <p>web developer. i'm in your internets, writing your code.</p>
 
-            <div id="twitter-status" class="activity-stream"></div>
+                <h2>projects</h2>
+                <ul>
+                    <li><a href="https://github.com/squalrus/chadschulz.com" target="_blank"><i class="icon-double-angle-right"></i> chadschulz.com</a></li>
+                    <li><a href="https://github.com/squalrus/site-diagnostics" target="_blank"><i class="icon-double-angle-right"></i> site-diagnostics</a></li>
+                    <li><a href="https://github.com/squalrus/notification-buddy" target="_blank"><i class="icon-double-angle-right"></i> notification-buddy</a></li>
+                    <li><a href="https://github.com/squalrus/site-scroll" target="_blank"><i class="icon-double-angle-right"></i> site-scroll</a></li>
+                    <li><a href="https://github.com/squalrus/Game-Demo" target="_blank"><i class="icon-double-angle-right"></i> Game-Demo</a></li>
+                    <li><a href="https://github.com/squalrus/sandbox" target="_blank"><i class="icon-double-angle-right"></i> sandbox</a></li>
+                </ul>
 
+                <h2>contact</h2>
+                <ul>
+                    <li><a href="https://twitter.com/chadschulz" target="_blank"><i class="icon-twitter-sign"></i> @chadschulz</a></li>
+                    <li><a href="https://github.com/squalrus" target="_blank"><i class="icon-github-sign"></i> github</a></li>
+                    <li><a href="mailto:chad.awesome@gmail.com" target="_blank"><i class="icon-envelope-alt"></i> email</a></li>
+                </ul>
+
+                <h2>i love</h2>
+                <ul>
+                    <li><a href="http://fortawesome.github.io/Font-Awesome/" target="_blank"><i class="icon-heart"></i> Font Awesome</a></li>
+                    <li><a href="http://placekitten.com/" target="_blank"><i class="icon-heart"></i> {placekitten}</a></li>
+                </ul>
+            </div>
         </div>
     </section>
 
     <footer>
-        <div class="container-thin">
+        <div class="container">
             <p>&copy; 2013</p>
         </div>
     </footer>
@@ -48,7 +84,27 @@
         var stream = new ActivityStream;
 
         $.when( stream.github(), stream.twitter() ).done( function( ){
-            $( '#github-feed' ).html( stream.toString() );
+            $( '#activity-stream' ).html( stream.toString() );
+        });
+
+
+        var $toggle = $( '.toggle-switch' );
+
+        $toggle.on( 'click', 'li', function( event ){
+            event.preventDefault();
+
+            var $el = $( event.target )
+                ,type = $el.parent()[0].id;
+
+            $toggle.children( 'li' ).removeClass( 'active' );
+            $el.parent( 'li' ).addClass( 'active' );
+
+            $( '.activity-entry' ).hide();
+
+            if( type === 'all' )
+                $( '.activity-entry' ).show();
+            else
+                $( '.activity-entry.' + type ).show();
         });
     </script>
 </body>
