@@ -48,11 +48,11 @@
     };
 
     actionEvents[ 'IssuesEvent' ] = function( payload, repo ){
-        return '<span class="keyword">created issue</span> in repo <a href="' + base + repo.name + '" target="_blank">' + repo.name + '</a> <span class="quote">' + payload.issue.body + '</span>';
+        return '<span class="keyword">created issue</span> in repo <a href="' + base + repo.name + '" target="_blank">' + repo.name + '</a> <span class="quote">' + payload.issue.title + '</span>';
     };
 
     actionEvents[ 'IssueCommentEvent' ] = function( payload, repo ){
-        return '<span class="keyword">commented</span> in repo <a href="' + base + repo.name + '" target="_blank">' + repo.name + '</a> <span class="quote">' + payload.comment.body + '</span>';
+        return '<span class="keyword">commented</span> in repo <a href="' + base + repo.name + '" target="_blank">' + repo.name + '</a> <span class="quote">' + payload.issue.title + '</span>';
     };
 
     actionEvents[ 'PullRequestEvent' ] = function( payload, repo ){
