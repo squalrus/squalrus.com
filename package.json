@@ -6,9 +6,9 @@
 		"www.chadschulz.com"
 	],
 	"scripts": {
-		"start": "server.js"
+		"start": "node server.js"
 	},
-	"version": "0.8.1",
+	"version": "0.8.2",
 	"engines": {
 		"node": "0.8.x"
 	},

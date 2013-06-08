@@ -7,7 +7,7 @@ blockquote,q{quotes:none;}
 blockquote:before,blockquote:after,q:before,q:after{content:'';content:none;}
 table{border-collapse:collapse;border-spacing:0;}
 html{font-size:100%;}
-body{background-color:#F4F4F4;color:#333;font-family:arial,helvetica,sans-serif;font-size:0.85em;}
+body{background-color:#F4F4F4;color:#333;font-family:'Raleway',arial,helvetica,sans-serif;font-size:0.85em;font-weight:400;}
 a:link,a:visited{color:#4690e0;text-decoration:none;}
 a:active,a:hover{color:#2376d0;text-decoration:underline;}
 p{line-height:1.6em;margin:1.0em 0;}
