@@ -2,7 +2,6 @@
 var  express      = require( 'express' )
     ,http         = require( 'http' )
     ,path         = require( 'path' )
-    ,less         = require( 'less-middleware' )
     ;
 
 var app = express();
@@ -19,14 +18,6 @@ app.use( express.bodyParser() );
 app.use( express.compress() );
 app.use( express.methodOverride() );
 app.use( express.static( path.join( __dirname, 'public' ) ) );
-
-// LESS compiler middleware
-app.use( less({
-    src: __dirname + '/theme'
-    ,dest: __dirname + '/public/css'
-    ,prefix: '/css'
-    ,compress: true
-}) );
 
 // Development only
 if ( 'development' == app.get('env') ){
