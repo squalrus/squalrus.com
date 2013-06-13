@@ -3,8 +3,6 @@ var  express      = require( 'express' )
     ,http         = require( 'http' )
     ,path         = require( 'path' )
     ,less         = require( 'less-middleware' )
-    ,assetManager = require( 'connect-assetmanager' )
-    ,assetHandler = require( 'connect-assetmanager-handlers' )
     ;
 
 var app = express();
@@ -20,6 +18,7 @@ app.use( express.logger('dev') );
 app.use( express.bodyParser() );
 app.use( express.compress() );
 app.use( express.methodOverride() );
+app.use( express.static( path.join( __dirname, 'public' ) ) );
 
 // LESS compiler middleware
 app.use( less({
@@ -28,28 +27,6 @@ app.use( less({
     ,prefix: '/css'
     ,compress: true
 }) );
-
-// Minification middleware
-app.use( assetManager({
-    'js': {
-        'route': /\/js\/Stream\.js/
-        ,'path': './public/js/'
-        ,'dataType': 'javascript'
-        ,'files': [
-            'Stream.js'
-            ,'Stream.Github.js'
-            ,'Stream.Twitter.js'
-            ,'Stream.Tumblr.js'
-        ]
-        ,'debug': true
-        // Hold off until officially fixed
-        // ,'postManipulate': {
-        //     '^': [ assetHandler.uglifyJsOptimize ]
-        // }
-    }
-}) );
-
-app.use( express.static( path.join( __dirname, 'public' ) ) );
 
 // Development only
 if ( 'development' == app.get('env') ){

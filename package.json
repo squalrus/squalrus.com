@@ -15,9 +15,7 @@
 	"dependencies": {
 		"express": "3.2.0",
 		"ejs": "*",
-		"less-middleware": "*",
-		"connect-assetmanager": "0.0.28",
-		"connect-assetmanager-handlers": "0.0.18"
+		"less-middleware": "*"
 	},
 	"devDependencies": {
 		"grunt": "~0.4.1",
