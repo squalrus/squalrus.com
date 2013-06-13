@@ -44,6 +44,9 @@
         ,success: function( data, status ){
             updateStream( data );
         }
+        , error: function( xhr, status, error ){
+            console.log( 'oops' );
+        }
     });
 
 };

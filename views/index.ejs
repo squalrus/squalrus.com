@@ -96,7 +96,7 @@
     <script>
         var stream = new ActivityStream;
 
-        $.when( stream.github(), stream.twitter(), stream.tumblr() ).done( function( ){
+        $.when( stream.github(), stream.tumblr() ).done( function( ){
             $( '#activity-stream' ).html( stream.toString() );
         });
 
