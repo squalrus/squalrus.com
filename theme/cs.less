@@ -1,33 +1,15 @@
-@import url( http://fonts.googleapis.com/css?family=Raleway:400,900 );
-
-@font-custom:   'Raleway', sans-serif ;
-@font-standard: 'Raleway', arial, helvetica, sans-serif;
-
-@color-font:        #222;
-@color-dark:        #222;
-@color-mid:         #DDD;
-@color-light:       #F4F4F4;
-
-@color-primary:     #4690E0;
-
-@color-github:      #4183C4;
-@color-twitter:     #0084b4;
-@color-linkedin:    #069;
-@color-facebook:    #3b5998;
-@color-google-plus: #c53727;
-
-@import '_mixins';
+// Reset
+@import "lib/Reset";
 
 // MAIN
-@import '_reset';
-@import '_main';
-@import '_layout';
-@import '_navigation';
-@import '_icons';
-@import '_buttons';
+@import "Main";
+@import "Layout";
+@import "Navigation";
+@import "Icons";
+@import "Buttons";
 
 // COMPONENTS
-@import '_activity-stream';
+@import "ActivityStream";
 
 // PLUGINS
-@import 'lib/font-awesome';
+@import "lib/FontAwesome";

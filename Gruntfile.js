@@ -29,8 +29,8 @@ module.exports = function( grunt ){
 
         // Watch Directories / Files
         ,watch: {
-             files: ['lib/*.js', 'theme/*.less']
-            ,tasks: ['default']
+            files: ["lib/*.js", "theme/*.less", "Gruntfile.js"],
+            tasks: ["default"]
         }
     });
 

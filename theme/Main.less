@@ -1,19 +1,24 @@
+@import "Definition/Color.d.less";
+@import "Definition/Font.d.less";
+@import "Definition/Mixin.d.less";
+
+
 html { font-size: 100%; }
 
 body {
     background-color: #F4F4F4;
     color: #333;
-    font-family: @font-standard;
+    font-family: @Font_Standard;
     font-size: 0.85em;
     font-weight: 400;
 }
 
 a:link, a:visited {
-    color: @color-primary;
+    color: @Color_Primary;
     text-decoration: none;
 }
 a:active, a:hover {
-    color: darken( @color-primary, 10% );
+    color: darken( @Color_Primary, 10% );
     text-decoration: underline;
 }
 p {
@@ -23,28 +28,28 @@ p {
 
 h1 {
     color: #222;
-    font-family: @font-custom;
+    font-family: @Font_Custom;
     font-size: 4.0em;
     font-weight: 900;
     margin: 0.6em 0;
     text-transform: uppercase;
 }
 h2 {
-    font-family: @font-custom;
+    font-family: @Font_Custom;
     font-size: 1.9em;
     font-weight: 900;
     margin: 0.6em 0;
     text-transform: uppercase;
 }
 h3 {
-    font-family: @font-custom;
+    font-family: @Font_Custom;
     font-size: 1.5em;
     font-weight: 900;
     margin: 0.5em 0;
     text-transform: uppercase;
 }
 h4 {
-    font-family: @font-custom;
+    font-family: @Font_Custom;
     font-size: 1.3em;
     font-weight: 900;
     margin: 0.5em 0;
