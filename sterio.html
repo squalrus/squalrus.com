@@ -1,0 +1,98 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Ster.io</title>
+    <link rel="stylesheet" href="http://cdn.foundation5.zurb.com/normalize.css">
+    <link rel="stylesheet" href="http://cdn.foundation5.zurb.com/foundation.css">
+
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.12/angular.min.js"></script>
+    <script>
+        angular.module("sterio", [])
+        .controller("SterioController", function(){
+            this.stereo = 200;
+            this.amp = 0;
+
+            this.speakerFL = 50;
+            this.speakerFR = 50;
+            this.speakerRL = 50;
+            this.speakerRR = 50;
+
+            this.perSpeaker = function () {
+                if (this.amp > 0){
+                    return this.amp / 4;
+                } else {
+                    return this.stereo / 4;
+                }
+            };
+
+            this.utilization = function (part) {
+                return (this.perSpeaker() / part) * 100;
+            };
+        });
+    </script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.3.js"></script>
+    <script src="http://cdn.foundation5.zurb.com/foundation.js"></script>
+</head>
+<body ng-app="sterio" ng-controller="SterioController as str">
+    <div class="row">
+        <div class="small-6 small-offset-3 columns">
+            <h1 style="text-align: center">Car Ster.io</h1>
+            <p>Building your car stereo? Car Ster.io lets you estmate stereo, amp, and speaker wattages.</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="small-6 small-offset-3 columns">
+            <label>
+                Stereo
+                <input type="number" ng-model="str.stereo" />
+            </label>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="small-6 small-offset-3 columns">
+            <label>
+                Amp
+                <input type="number" ng-model="str.amp" />
+            </label>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="small-3 small-offset-3 columns">
+            <label>
+                Speaker FL ({{ str.perSpeaker() | number: 1 }} Watts)
+                <input type="number" ng-model="str.speakerFL" />
+            </label>
+            <span ng-class="{ label: true, success: str.utilization(str.speakerFL) <= 100, alert: str.utilization(str.speakerFL) > 100 }" style="display: block">{{ str.utilization(str.speakerFL) | number: 1 }}% utilized</span>
+        </div>
+        <div class="small-3 columns end">
+            <label>
+                Speaker FR ({{ str.perSpeaker() | number: 1 }} Watts)
+                <input type="number" ng-model="str.speakerFR" />
+            </label>
+            <span ng-class="{ label: true, success: str.utilization(str.speakerFR) <= 100, alert: str.utilization(str.speakerFR) > 100 }" style="display: block">{{ str.utilization(str.speakerFR) | number: 1 }}% utilized</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="small-3 small-offset-3 columns">
+            <label>
+                Speaker BL ({{ str.perSpeaker() | number: 1 }} Watts)
+                <input type="number" ng-model="str.speakerRL" />
+            </label>
+            <span ng-class="{ label: true, success: str.utilization(str.speakerRL) <= 100, alert: str.utilization(str.speakerRL) > 100 }" style="display: block">{{ str.utilization(str.speakerRL) | number: 1 }}% utilized</span>
+        </div>
+        <div class="small-3 columns end">
+            <label>
+                Speaker BR ({{ str.perSpeaker() | number: 1 }} Watts)
+                <input type="number" ng-model="str.speakerRR" />
+            </label>
+            <span ng-class="{ label: true, success: str.utilization(str.speakerRR) <= 100, alert: str.utilization(str.speakerRR) > 100 }" style="display: block">{{ str.utilization(str.speakerRR) | number: 1 }}% utilized</span>
+        </div>
+    </div>
+
+</body>
+</html>
